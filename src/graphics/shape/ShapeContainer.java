@@ -15,12 +15,14 @@ import graphics.shape.shapedecorator.BlackFillDecorator;
 import graphics.shape.shapedecorator.CrosshairDecorator;
 import state.State;
 import state.StateClient;
+import strategy.ClickStrategy;
 
 public class ShapeContainer extends JPanel implements StateClient, Pointable {
 
 	private static final long serialVersionUID = 1L;
 	private final List<Shape> shapes = new LinkedList<Shape>();
 	private Optional<Shape> selected = Optional.empty();
+	private ClickStrategy clickStrategy;
 
 	public ShapeContainer() {
 		super();
@@ -100,7 +102,11 @@ public class ShapeContainer extends JPanel implements StateClient, Pointable {
 
 	@Override
 	public void pointerDown(Point point) {
-		State.getState().handlePointerDown(point);
+		if (clickStrategy != null) {
+			clickStrategy.handlePointerDown(point);
+		} else {
+			State.getState().handlePointerDown(point);
+		}
 	}
 
 	@Override
@@ -111,6 +117,10 @@ public class ShapeContainer extends JPanel implements StateClient, Pointable {
 	@Override
 	public void pointerMoved(Point point, boolean pointerDown) {
 		State.getState().handlePointerMoved(point, pointerDown);
+	}
+
+	public void setClickStrategy(ClickStrategy clickStrategy) {
+
 	}
 
 }
