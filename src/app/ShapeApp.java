@@ -10,6 +10,7 @@ import javax.swing.SwingUtilities;
 
 import graphics.shape.ShapeContainer;
 import state.State;
+import strategy.CrosshairStrategy;
 
 public class ShapeApp extends JFrame implements Runnable {
 	private static final long serialVersionUID = 1L;
@@ -41,6 +42,7 @@ public class ShapeApp extends JFrame implements Runnable {
 		createMenuItem(menu, "Unmark", e -> State.getState().unmarkMode());
 		createMenuItem(menu, "Crosshair", e -> State.getState().crosshairMode());
 		createMenuItem(menu, "Resize", e -> State.getState().resizeMode());
+		createMenuItem(menu, "Strategy", e -> shapeContainer.setClickStrategy(new CrosshairStrategy(shapeContainer)));
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.add(menu);
 		this.setJMenuBar(menuBar);
