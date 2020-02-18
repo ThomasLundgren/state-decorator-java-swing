@@ -23,7 +23,4 @@ public class ResizeState extends State {
 		}
 	}
 
-	@Override
-	protected void init() {}
-
 }
