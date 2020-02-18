@@ -12,10 +12,11 @@ public class CrosshairStrategy extends AbstractClickStrategy {
 
 	@Override
 	public void handlePointerDown(Point point) {
-		client.select(point).ifPresent(shape -> {
-			client.addShape(new CrosshairDecorator(shape));
-			client.removeShape(shape);
-		});
+		client.select(point)
+				.ifPresent(shape -> {
+					client.addShape(new CrosshairDecorator(shape));
+					client.removeShape(shape);
+				});
 	}
 
 	@Override

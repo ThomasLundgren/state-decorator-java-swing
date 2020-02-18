@@ -20,8 +20,10 @@ public class MoveState extends State {
 
 	@Override
 	public void handlePointerMoved(Point point, boolean pointerDown) {
-		if (client.getSelected().isPresent() && pointerDown) {
-			client.moveShape(client.getSelected().get(), point);
+		if (client.getSelected()
+				.isPresent() && pointerDown) {
+			client.moveShape(client.getSelected()
+					.get(), point);
 		}
 	}
 

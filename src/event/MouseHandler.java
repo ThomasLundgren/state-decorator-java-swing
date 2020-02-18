@@ -25,8 +25,7 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
-	public void mouseClicked(MouseEvent e) {
-	}
+	public void mouseClicked(MouseEvent e) {}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
@@ -39,10 +38,8 @@ public class MouseHandler implements MouseListener, MouseMotionListener {
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent e) {
-	}
+	public void mouseEntered(MouseEvent e) {}
 
 	@Override
-	public void mouseExited(MouseEvent e) {
-	}
+	public void mouseExited(MouseEvent e) {}
 }

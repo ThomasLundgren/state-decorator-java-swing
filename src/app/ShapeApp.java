@@ -24,29 +24,37 @@ public class ShapeApp extends JFrame implements Runnable {
 	public void run() {
 		createMenue();
 		this.add(shapeContainer);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(400, 400);
 		State.reset(shapeContainer);
-		this.setVisible(true);
+		setVisible(true);
 	}
 
 	public void createMenue() {
 		JMenu menu = new JMenu("Modes");
 		JMenu insertMenu = new JMenu("Insert");
 		menu.add(insertMenu);
-		createMenuItem(insertMenu, "Circle", e -> State.getState().insertCircleMode());
-		createMenuItem(insertMenu, "Rectangle", e -> State.getState().insertRectangleMode());
-		createMenuItem(menu, "Move", e -> State.getState().moveMode());
-		createMenuItem(menu, "Delete", e -> State.getState().deleteMode());
-		createMenuItem(menu, "Mark", e -> State.getState().markMode());
-		createMenuItem(menu, "Unmark", e -> State.getState().unmarkMode());
-		createMenuItem(menu, "Crosshair", e -> State.getState().crosshairMode());
-		createMenuItem(menu, "Resize", e -> State.getState().resizeMode());
+		createMenuItem(insertMenu, "Circle", e -> State.getState()
+				.insertCircleMode());
+		createMenuItem(insertMenu, "Rectangle", e -> State.getState()
+				.insertRectangleMode());
+		createMenuItem(menu, "Move", e -> State.getState()
+				.moveMode());
+		createMenuItem(menu, "Delete", e -> State.getState()
+				.deleteMode());
+		createMenuItem(menu, "Mark", e -> State.getState()
+				.markMode());
+		createMenuItem(menu, "Unmark", e -> State.getState()
+				.unmarkMode());
+		createMenuItem(menu, "Crosshair", e -> State.getState()
+				.crosshairMode());
+		createMenuItem(menu, "Resize", e -> State.getState()
+				.resizeMode());
 		createMenuItem(menu, "Crosshair Strategy",
 				e -> shapeContainer.setClickStrategy(new CrosshairStrategy(shapeContainer)));
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.add(menu);
-		this.setJMenuBar(menuBar);
+		setJMenuBar(menuBar);
 	}
 
 	private void createMenuItem(JMenu menu, String label, ActionListener listener) {

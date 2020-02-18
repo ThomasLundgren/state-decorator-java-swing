@@ -18,16 +18,16 @@ import strategy.ClickStrategy;
 public class ShapeContainer extends JPanel implements StateClient, Pointable {
 
 	private static final long serialVersionUID = 1L;
-	private final List<Shape> shapes = new LinkedList<Shape>();
+	private final List<Shape> shapes = new LinkedList<>();
 	private Optional<Shape> selected = Optional.empty();
 	private ClickStrategy clickStrategy;
 
 	public ShapeContainer() {
 		super();
 		MouseHandler mouseHandler = new MouseHandler(this);
-		this.addMouseListener(mouseHandler);
-		this.addMouseMotionListener(mouseHandler);
-		this.setBackground(Color.white);
+		addMouseListener(mouseHandler);
+		addMouseMotionListener(mouseHandler);
+		setBackground(Color.white);
 	}
 
 	@Override
@@ -43,7 +43,10 @@ public class ShapeContainer extends JPanel implements StateClient, Pointable {
 			System.out.println(selected);
 			return selected;
 		}
-		shapes.stream().filter(shape -> shape.intersects(point)).findFirst().ifPresent(s -> selected = Optional.of(s));
+		shapes.stream()
+				.filter(shape -> shape.intersects(point))
+				.findFirst()
+				.ifPresent(s -> selected = Optional.of(s));
 		System.out.println(selected);
 		return selected;
 	}
@@ -64,6 +67,12 @@ public class ShapeContainer extends JPanel implements StateClient, Pointable {
 	}
 
 	@Override
+	public void resizeShape(Shape shape, Point point) {
+		shape.resizeTo(point);
+		repaint();
+	}
+
+	@Override
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		shapes.forEach(shape -> shape.draw(g));
@@ -74,18 +83,21 @@ public class ShapeContainer extends JPanel implements StateClient, Pointable {
 		if (clickStrategy != null) {
 			clickStrategy.handlePointerDown(point);
 		} else {
-			State.getState().handlePointerDown(point);
+			State.getState()
+					.handlePointerDown(point);
 		}
 	}
 
 	@Override
 	public void pointerUp(Point point) {
-		State.getState().handlePointerUp(point);
+		State.getState()
+				.handlePointerUp(point);
 	}
 
 	@Override
 	public void pointerMoved(Point point, boolean pointerDown) {
-		State.getState().handlePointerMoved(point, pointerDown);
+		State.getState()
+				.handlePointerMoved(point, pointerDown);
 	}
 
 	public void setClickStrategy(ClickStrategy clickStrategy) { this.clickStrategy = clickStrategy; }

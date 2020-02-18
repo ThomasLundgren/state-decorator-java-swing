@@ -14,7 +14,8 @@ public class InsertRectangleState extends State {
 
 	@Override
 	public void handlePointerUp(Point point) {
-		client.addShape(new Rectangle(point.getX(), point.getY(), Math.random() * 50.0, Math.random() * 50.0));
+		client.addShape(
+				new Rectangle(point.getX(), point.getY(), (Math.random() + 0.1) * 50.0, (Math.random() + 0.1) * 50.0));
 	}
 
 	@Override

@@ -11,11 +11,14 @@ public class UnmarkState extends State {
 
 	@Override
 	public void handlePointerDown(Point point) {
-		client.select(point).ifPresent(shape -> {
-			Shape unmarkedShape = shape.peel();
-			client.removeShape(shape);
-			client.addShape(unmarkedShape);
-		});
+		// @formatter:off
+		client.select(point)
+			.ifPresent(shape -> {
+				Shape unmarkedShape = shape.peel();
+				client.removeShape(shape);
+				client.addShape(unmarkedShape);
+			});
+		// @formatter:on
 	}
 
 	@Override

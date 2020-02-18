@@ -17,4 +17,6 @@ public interface StateClient {
 
 	void removeShape(Shape shape);
 
+	void resizeShape(Shape shape, Point point);
+
 }

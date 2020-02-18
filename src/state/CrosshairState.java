@@ -11,10 +11,14 @@ public class CrosshairState extends State {
 
 	@Override
 	public void handlePointerDown(Point point) {
-		client.select(point).ifPresent(shape -> {
-			client.addShape(new CrosshairDecorator(shape));
-			client.removeShape(shape);
-		});
+		// @formatter:off
+		client.select(point)
+			.ifPresent(shape -> {
+				client.addShape(new CrosshairDecorator(shape));
+				client.removeShape(shape);
+			});
+		// @formatter:on
+
 	}
 
 	@Override

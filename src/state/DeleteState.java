@@ -10,7 +10,8 @@ public class DeleteState extends State {
 
 	@Override
 	public void handlePointerDown(Point point) {
-		client.select(point).ifPresent(client::removeShape);
+		client.select(point)
+				.ifPresent(client::removeShape);
 	}
 
 	@Override

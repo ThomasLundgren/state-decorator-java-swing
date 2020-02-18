@@ -12,11 +12,12 @@ public class MarkState extends State {
 
 	@Override
 	public void handlePointerDown(Point point) {
-		client.select(point).ifPresent(shape -> {
-			Shape markedShape = new BlackFillDecorator(shape);
-			client.removeShape(shape);
-			client.addShape(markedShape);
-		});
+		client.select(point)
+				.ifPresent(shape -> {
+					Shape markedShape = new BlackFillDecorator(shape);
+					client.removeShape(shape);
+					client.addShape(markedShape);
+				});
 	}
 
 	@Override
