@@ -25,4 +25,7 @@ public class MoveState extends State {
 		}
 	}
 
+	@Override
+	protected void init() {}
+
 }

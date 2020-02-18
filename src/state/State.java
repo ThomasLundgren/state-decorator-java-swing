@@ -9,6 +9,7 @@ public abstract class State {
 
 	protected State(StateClient client) {
 		this.client = client;
+		init();
 	}
 
 	public static void reset(StateClient client) {
@@ -56,5 +57,7 @@ public abstract class State {
 	public void crosshairMode() {
 		setState(new CrosshairState(client));
 	}
+
+	protected abstract void init();
 
 }

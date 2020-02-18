@@ -42,8 +42,7 @@ public class ShapeApp extends JFrame implements Runnable {
 		createMenuItem(menu, "Unmark", e -> State.getState().unmarkMode());
 		createMenuItem(menu, "Crosshair", e -> State.getState().crosshairMode());
 		createMenuItem(menu, "Resize", e -> State.getState().resizeMode());
-		createMenuItem(menu, "Crosshair Strategy",
-				e -> shapeContainer.setClickStrategy(new CrosshairStrategy(shapeContainer)));
+		createMenuItem(menu, "Strategy", e -> shapeContainer.setClickStrategy(new CrosshairStrategy(shapeContainer)));
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.add(menu);
 		this.setJMenuBar(menuBar);

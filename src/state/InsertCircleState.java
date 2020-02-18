@@ -10,6 +10,9 @@ public class InsertCircleState extends State {
 	}
 
 	@Override
+	protected void init() {}
+
+	@Override
 	public void handlePointerDown(Point point) {}
 
 	@Override

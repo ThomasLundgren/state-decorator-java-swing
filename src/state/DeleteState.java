@@ -19,4 +19,7 @@ public class DeleteState extends State {
 	@Override
 	public void handlePointerMoved(Point point, boolean pointerDown) {}
 
+	@Override
+	protected void init() {}
+
 }
