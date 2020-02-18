@@ -11,8 +11,6 @@ import javax.swing.JPanel;
 import event.MouseHandler;
 import event.Pointable;
 import graphics.Point;
-import graphics.shape.shapedecorator.BlackFillDecorator;
-import graphics.shape.shapedecorator.CrosshairDecorator;
 import state.State;
 import state.StateClient;
 import strategy.ClickStrategy;
@@ -54,43 +52,14 @@ public class ShapeContainer extends JPanel implements StateClient, Pointable {
 	public Optional<Shape> getSelected() { return selected; }
 
 	@Override
+	public void removeShape(Shape shape) {
+		shapes.remove(shape);
+		repaint();
+	}
+
+	@Override
 	public void moveShape(Shape shape, Point point) {
 		shape.moveTo(point);
-		repaint();
-	}
-
-	@Override
-	public void deleteShape(Shape shape) {
-		shapes.remove(shape);
-		repaint();
-	}
-
-	@Override
-	public void markShape(Shape shape) {
-		Shape markedShape = new BlackFillDecorator(shape);
-		shapes.remove(shape);
-		shapes.add(markedShape);
-		repaint();
-	}
-
-	@Override
-	public void unmarkShape(Shape shape) {
-		Shape unmarkedShape = shape.peel();
-		shapes.remove(shape);
-		shapes.add(unmarkedShape);
-		repaint();
-	}
-
-	@Override
-	public void resizeShape(Shape shape, Point newPoint) {
-		shape.resizeTo(newPoint);
-		repaint();
-	}
-
-	@Override
-	public void drawCrosshair(Shape shape) {
-		shapes.add(new CrosshairDecorator(shape));
-		shapes.remove(shape);
 		repaint();
 	}
 
@@ -119,8 +88,6 @@ public class ShapeContainer extends JPanel implements StateClient, Pointable {
 		State.getState().handlePointerMoved(point, pointerDown);
 	}
 
-	public void setClickStrategy(ClickStrategy clickStrategy) {
-
-	}
+	public void setClickStrategy(ClickStrategy clickStrategy) { this.clickStrategy = clickStrategy; }
 
 }

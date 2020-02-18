@@ -15,14 +15,6 @@ public interface StateClient {
 
 	void moveShape(Shape shape, Point point);
 
-	void deleteShape(Shape shape);
-
-	void markShape(Shape shape);
-
-	void unmarkShape(Shape shape);
-
-	void resizeShape(Shape shape, Point newPoint);
-
-	void drawCrosshair(Shape shape);
+	void removeShape(Shape shape);
 
 }

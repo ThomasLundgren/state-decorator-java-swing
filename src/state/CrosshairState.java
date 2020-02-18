@@ -1,6 +1,7 @@
 package state;
 
 import graphics.Point;
+import graphics.shape.shapedecorator.CrosshairDecorator;
 
 public class CrosshairState extends State {
 
@@ -10,7 +11,10 @@ public class CrosshairState extends State {
 
 	@Override
 	public void handlePointerDown(Point point) {
-		client.select(point).ifPresent(client::drawCrosshair);
+		client.select(point).ifPresent(shape -> {
+			client.addShape(new CrosshairDecorator(shape));
+			client.removeShape(shape);
+		});
 	}
 
 	@Override

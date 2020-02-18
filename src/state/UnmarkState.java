@@ -1,6 +1,7 @@
 package state;
 
 import graphics.Point;
+import graphics.shape.Shape;
 
 public class UnmarkState extends State {
 
@@ -10,7 +11,11 @@ public class UnmarkState extends State {
 
 	@Override
 	public void handlePointerDown(Point point) {
-		client.select(point).ifPresent(client::unmarkShape);
+		client.select(point).ifPresent(shape -> {
+			Shape unmarkedShape = shape.peel();
+			client.removeShape(shape);
+			client.addShape(unmarkedShape);
+		});
 	}
 
 	@Override

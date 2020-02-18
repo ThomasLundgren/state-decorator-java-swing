@@ -19,7 +19,7 @@ public class ResizeState extends State {
 	@Override
 	public void handlePointerMoved(Point point, boolean pointerDown) {
 		if (pointerDown) {
-			client.getSelected().ifPresent(shape -> client.resizeShape(shape, point));
+			client.getSelected().ifPresent(shape -> shape.resizeTo(point));
 		}
 	}
 

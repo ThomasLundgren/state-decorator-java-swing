@@ -1,6 +1,7 @@
 package strategy;
 
 import graphics.Point;
+import graphics.shape.shapedecorator.CrosshairDecorator;
 import state.StateClient;
 
 public class CrosshairStrategy extends AbstractClickStrategy {
@@ -11,7 +12,10 @@ public class CrosshairStrategy extends AbstractClickStrategy {
 
 	@Override
 	public void handlePointerDown(Point point) {
-		client.select(point).ifPresent(client::drawCrosshair);
+		client.select(point).ifPresent(shape -> {
+			client.addShape(new CrosshairDecorator(shape));
+			client.removeShape(shape);
+		});
 	}
 
 	@Override
