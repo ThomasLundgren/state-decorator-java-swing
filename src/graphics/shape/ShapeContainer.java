@@ -47,7 +47,6 @@ public class ShapeContainer extends JPanel implements StateClient, Pointable {
 				.filter(shape -> shape.intersects(point))
 				.findFirst()
 				.ifPresent(s -> selected = Optional.of(s));
-		System.out.println(selected);
 		return selected;
 	}
 
